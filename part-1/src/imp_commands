@@ -1,0 +1,4 @@
+start a ts project -> npm create@latest -> vanilla -> typescript -> cd <project-name> -> npm i -> npm run dev
+
+1) npm run build -> transpiles ur code into js in this dir only so that u can view the js code as well 
+2) npm run preview -> u can preview ur transpiled js code in production
