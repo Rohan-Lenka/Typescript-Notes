@@ -38,7 +38,7 @@ w = new Date()
 // const w: any or const w   ->   error coz const variables cant be of any type 
 // bad practice to assign any type -> basically means doing js -> lose all benefits of ts
 
-const any = JSON.parse("asddasdsa") // in case of JSON.parse and fetch() and axios
+// const any = JSON.parse("asddasdsa") // in case of JSON.parse and fetch() and axios
 
 
 // 5) Objects // V-IMP
@@ -91,3 +91,54 @@ const person2: Person = {
   isMale: true,
   friends: ["a1", "a2", "a3"]
 }
+
+
+// 7) Functions in ts 
+function print(word: string) {
+  console.log(word)
+}
+// for return type functions ->
+function sum(a: number, b: number) {
+  return a + b   // ts automatically knows that the return type is number 
+}
+// OR u can do ->
+function sum1(a: number, b: number): number {    // explicitly mention its return type // Avoid doing this
+  return a + b
+}
+// passing objects to functions ->
+function printPerson(person: {name: string, age: number}) {
+  console.log(person.name);
+}
+printPerson(person2) // in the function we mentioned that we need an ob whose type should look like {name: string, age: number}
+                     // but person2 type is interface Person which doesnt match with the function's requirement 
+                     // So why doesnt it throw error ?
+                     // {name: string, age: number} means that the function only needs these keys(properties) of the object that is passed to it
+                     // as long as the passed object has ATLEAST these properties, it will not throw error
+
+// const person3: {name: string} = {name: "mohan"}
+// printPerson(person3) // will throw error
+
+// IMP 
+// printPerson({name: "Mohan", age: 12, age2: 23}) // has ATLEAST those properties // still throw error
+                                                   // Reason -> u cant explicitly pass such objects // this is a ts feature to prevent typos 
+
+
+// 8) void type 
+// void means function returns literally nothing
+function printContent(content: string) {   // hover over the word function to see the return type void 
+  console.log(content)
+}
+const rtVal = printContent("asda")
+console.log(rtVal)   // rtVal is printed as undefined // that doesnt mean void is same as undefined // IMP
+function random(): undefined {   // return type is undefined not void  
+  return 
+}
+
+
+// 9) Optional Parameters
+// in js we have seen that many times inside functions we may pass some parameters which we may or may not need
+// in ts it is done like this ->
+function func(name: string, age: number, isTrue?: boolean) {
+  console.log(name + age + isTrue)
+} 
+func("rohan", 20) // prints rohan20undefined -> undefined coz isTrue parameter is not sent while calling the function
