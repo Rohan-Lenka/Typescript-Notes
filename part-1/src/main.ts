@@ -1,17 +1,18 @@
 // 1) types
 let a: number = 12
 let str: string = "string"
+let bool: boolean = true // can be true/false only, don't write 0/1
 let b: number = 1.2
 // a = "str" // error 
 // a = 13 // no error
 
 const c = 13 // called literal type in ts meaning this c has a literal type of 4
 // or write like this -> const c: 13 = 13
-
+// const c: number = 12 // also OK
 
 // 2) type inference
 let num1 = 11 // ts automatically assigns type number to num1
-let num2: number // doesnt hold any val currently but it is a number type // num3 = "string" -> error
+let num2: number // doesnt hold any val currently but it is a number type // num2 = "string" -> error
 
 let num3; // any type -> it can be anything
 // same as doing ->
