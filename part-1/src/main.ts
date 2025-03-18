@@ -24,10 +24,10 @@ y = 12 // as any type, so no error what so ever if u try to assign any type of v
 
 // 3) Array
 const arr1: number[] = [2, 3, 4] // if u declare an array using const, literal type is not done to arrays // i.e u can push, pop, etc // IMP
+const Arr: any[] = [1, "2", true] 
 const arr2 = ["hi", "bye"] // type inference 
 // arr1.push("hi") // error
 arr1.push(5.5) // no error 
-
 const arr3:[1, 3, 5] = [1, 3, 5] // this is how u give literal type as an array in ts // now, arr3.push(4) will show error 
 arr3.pop() // but pop still works // IMP
 
