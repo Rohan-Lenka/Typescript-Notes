@@ -143,3 +143,26 @@ function func(name: string, age: number, isTrue?: boolean) {
   console.log(name + age + isTrue)
 } 
 func("rohan", 20) // prints rohan20undefined -> undefined coz isTrue parameter is not sent while calling the function
+
+
+// 10) Rest Parameters
+function restFn(a: number, b: number, ...restArgs: number[]) {  // we know the rest patrameters are actually structured as an array 
+  console.log(a + " " + b + " " + restArgs)                     // inside the function, so give type as an array. Eg- string[]
+}
+restFn(1, 2, 10, 11, 22)
+
+
+// 11) functions as variables & passing functions inside functions in ts 
+function f1(a: number, b: number, callback: (a: number, b: number) => number) {
+  console.log(callback(a, b))
+}
+f1(12, 22, (a: number, b: number) => a + b)
+// define function type using arrow syntax -> 
+// (param1: type1, paarm2: type2, ...) => <return type>
+
+// or define custom type -> 
+type JoinStringsFn = (s1: string, s2: string) => string 
+function f2(s1: string, s2: string, cb: JoinStringsFn) {
+  console.log(cb(s1, s2))
+}
+f2("hello", "earth", (s1: string, s2: string) => s1 + s2)
