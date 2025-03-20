@@ -158,7 +158,7 @@ function f1(a: number, b: number, callback: (a: number, b: number) => number) {
 }
 f1(12, 22, (a: number, b: number) => a + b)
 // define function type using arrow syntax -> 
-// (param1: type1, paarm2: type2, ...) => <return type>
+// (param1: <type1>, paarm2: <type2>, ...) => <return type>
 
 // or define custom type -> 
 type JoinStringsFn = (s1: string, s2: string) => string 
