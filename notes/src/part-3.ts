@@ -94,3 +94,36 @@ const input = document.querySelector(".text-input")  // here u can hover over in
 // Solution -> use generic to specify 
 const inpt = document.querySelector<HTMLInputElement>(".text-input")
 console.log(inpt?.value)  // ? because inpt can be null too if no HTML element exists with a class of text-input 
+
+
+// 6) generics in Promises
+// In TypeScript, promises are generic so that they can specify the type of value they resolve with
+// Ex ->
+function wait(str: string, duration: number) {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(str), duration)
+    })
+}
+// wait("hello", 2000).then((str: string) => { // error // cant assign string type coz u haven't specified the generic in the Promise
+//     console.log(str.length)
+// })
+function waitNew(str: string, duration: number) {
+    return new Promise<string>(resolve => {
+        setTimeout(() => resolve(str), duration)
+    })
+}
+// Here, new Promise<string> explicitly declares that this promise will resolve with a string.
+// This ensures that when then() is used, TypeScript knows the resolved value is a string
+waitNew("hello", 2000).then((str: string) => {
+    console.log(str.length)
+})
+// What was happening before -> // IMP
+// If no generic type is provided, TypeScript defaults to Promise<unknown>,
+// meaning str inside .then() would be of type unknown, requiring explicit type assertions.
+
+// in async await -> 
+async function main() {
+    const res = await fetch("URL")  // here the fetch function also returns a Promise
+    return res
+} // this function returns a Promise, so u should specify the generic in the return type, but it is automatically inferred by ts
+// hover over main  
