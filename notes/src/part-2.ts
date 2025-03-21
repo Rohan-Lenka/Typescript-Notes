@@ -67,7 +67,7 @@ const lion: Lion = {
     isWildAnimal: true
 }
 
-// NOTE -> intersection not useful in case of primitive types // will show error
+// NOTE -> intersection not useful in case of primitive types
 // Ex -> 
 type custom = number & string // this has a type of never // hover over custom  
 // const a: custom = 12 // variables with never type will always show error when assigned any value
@@ -104,6 +104,7 @@ let nums: NumberArray = [1, 2, 3, 4]  // or -> const nums: readonly number[] = [
 // nums.push(5) 
 // nums.pop()
 // nums[2] = 13 // all error // coz can't modify array after declaration
+// can still use non manipulative functions like map, forEach, etc... 
 
 // IMP ->
 // type MyNumber = readonly number
@@ -141,7 +142,7 @@ function greet(name: string) {
     console.log("Hi " + name)
 }
 type greetType = typeof greet // we can extract the type of greet function for debugging purposes
-// type greetReturnType = typeof greet("John") // eror // can't do complex stuff with typeof 
+// type GreetReturnType = typeof greet("John") // error // can't do complex stuff with typeof 
 
 
 
@@ -150,12 +151,12 @@ type greetType = typeof greet // we can extract the type of greet function for d
 
 
 // 6) as const and enum
-const a = 12 // this is same as doing let a = 12 as const // using as const key word
+const a = 12 // this is same as doing let a = 12 as const // using as const keyword
 // mainly used as -> 
-const arr1 = [1, 2, 3] as const  // arr1 has become a readonly array 
+let arr1 = [1, 2, 3] as const  // arr1 has become a readonly array 
 // These readonly arrays can be used as enums 
 // Ex ->
-type skills = "novice"| "avg" | "expert"
+type skills = "novice" | "avg" | "expert"
 type Player1 = {
     skill: skills
 }
@@ -179,7 +180,7 @@ const obj = {
 
 // 7) Tuple 
 // What if I want an array whose index=0 should be string, index=1 should be number, index=2 should be boolean
-// NOTE -> using any[] would wrong 
+// NOTE -> using any[] would be wrong coz that would mean => index=0 -> any, index=1 -> any, etc...
 // Solution -> 
 type Tuple = [string, number, boolean]
 const ids: Tuple = ["123", 99, true]  // anything else error 
