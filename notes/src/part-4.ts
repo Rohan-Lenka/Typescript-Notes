@@ -63,3 +63,52 @@ type Params = Parameters<typeof compare>  // extracts the function's parameters'
 type Param1 = Parameters<typeof compare>[0]  // 1st param
 type Param2 = Parameters<typeof compare>[1]  // 2nd param 
 // type Param3 = Parameters<typeof compare>[2]  // error  
+
+type Fn = (num: number, str: string) => boolean[] | { name: string, age: number }
+type RetTypeOfFn = ReturnType<Fn>  // like this too
+
+// 4) Record
+type Person = {
+    name: string
+    age: number
+}
+type People1 = {
+    [index: string]: Person[]
+}
+// This same thing can be done using Record ->
+type People2 = Record<string, Person[]>
+                  // <index type, property type>    
+const ob: People2 = {
+    rohan: [{
+        name: "rohan", age: 12
+    }, {
+        name: "mohan", age: 23
+    }]
+}
+
+
+// 5) Readonly
+type Todo = {
+    name: string
+    completed: boolean
+}
+type NewTodo = Readonly<Todo>  // makes the whole Todo type readonly // hover over NewTodo to see its type 
+// we could have done that using as const but as const is only usable on js code so not on ts types
+// like this ->
+const todo: Todo = {
+    name: "eat food",
+    completed: true
+} as const 
+
+
+// 6) Awaited 
+type P = Promise<string>
+// Awaited is used to know what the Promise is resolving to -> string or number or something else
+type V = Awaited<P>  // hover over V to see string
+
+// in async functions
+async function Async() {
+    return 3
+} // hover over Async to see that the function Async returns Promise<number>
+// u can get that using Awaited ->
+type A = Awaited<ReturnType<typeof Async>>  // Awaited works on nested generics
