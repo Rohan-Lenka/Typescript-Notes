@@ -1,5 +1,5 @@
 // GENERICS // V.IMP
-// syntax -> <any name, generally given T>
+// syntax -> <any name generally given T>
 
 
 // 1) Why generics 

@@ -1,4 +1,15 @@
-start a ts project -> npm create@latest -> vanilla -> typescript -> cd <project-name> -> npm i -> npm run dev
+HOW TO START A TYPESCRIPT PROJECT 
 
-1) npm run build -> transpiles ur code into js in this dir only so that u can view the js code as well 
-2) npm run preview -> u can preview ur transpiled js code in production
+1) Using CLI ->
+> npm i --save-dev typescript -> npx tsc --init (tsconfig.json file gets created) -> create ur ts file and code 
+> to compile ts code => npx tsc script.ts (script.js gets created which is basically ur ts code converted to js)
+> BUT if ur ts code has error and u still use npx tsc script.ts, the errored ts code will still get converted to js 
+& u get a error containing js file
+> SOLUTION -> use npx tsc script.ts --noEmitOnError, to prevent errored ts code to get converted to js code  
+
+2) Using a bundler(Vite) -> 
+> npm create@latest -> vanilla -> typescript -> cd <project-name> -> npm i -> npm run dev
+> i) npm run build -> transpiles ur code into js in this dir only so that u can view the js code as well 
+  ii) npm run preview -> u can preview ur transpiled js code in production
+
+> NOTE -> Without the tsconfig.json file, ur ts code will not show type errors9
