@@ -12,4 +12,17 @@ HOW TO START A TYPESCRIPT PROJECT
 > i) npm run build -> transpiles ur code into js in this dir only so that u can view the js code as well 
   ii) npm run preview -> u can preview ur transpiled js code in production
 
-> NOTE -> Without the tsconfig.json file, ur ts code will not show type errors9
+> NOTE -> Without the tsconfig.json file, ur ts code will not show type errors
+
+3) For backend in ts ->
+> npm init -y  (initializes empty project with package.json file)
+> npm i typescript
+> npx tsc --init (to add a tsconfg.json file)
+> (make some changes in the tsconfig.json file) _
+  > Change `rootDit` to `src`
+  > Change `outDir` to `dist`
+> (make some changes in package.json) _
+  > add the dev script_ "dev": "tsc -b && node ./dist/index.js" 
+  (tsc -b builds the ts project i.e transpiles the ts code into js code)
+  (the rest of the command runs the index.js file as usual)
+> npm run dev  
